@@ -242,17 +242,27 @@ public class RGBWFragment extends DeviceFragment {
         img_color.post(new Runnable() {
             @Override
             public void run() {
-                img_color.setDrawingCacheEnabled(true);
-                bitmaps[0] = Bitmap.createBitmap(img_color.getDrawingCache());
-                img_color.setDrawingCacheEnabled(false);
+//                img_color.setDrawingCacheEnabled(true);
+//                bitmaps[0] = Bitmap.createBitmap(img_color.getDrawingCache());
+//                img_color.setDrawingCacheEnabled(false);
+
+                bitmaps[0] = Bitmap.createBitmap( img_color.getMeasuredWidth(), img_color.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+                Canvas c = new Canvas(bitmaps[0]);
+                img_color.layout(0, 0, img_color.getMeasuredWidth(), img_color.getMeasuredHeight());
+                img_color.draw(c);
+
             }
         });
         img_white.post(new Runnable() {
             @Override
             public void run() {
-                img_white.setDrawingCacheEnabled(true);
-                bitmaps[1] = Bitmap.createBitmap(img_white.getDrawingCache());
-                img_white.setDrawingCacheEnabled(false);
+//                img_white.setDrawingCacheEnabled(true);
+//                bitmaps[1] = Bitmap.createBitmap(img_white.getDrawingCache());
+//                img_white.setDrawingCacheEnabled(false);
+                bitmaps[1] = Bitmap.createBitmap( img_white.getMeasuredWidth(), img_white.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+                Canvas c = new Canvas(bitmaps[1]);
+                img_white.layout(0, 0, img_white.getMeasuredWidth(), img_white.getMeasuredHeight());
+                img_white.draw(c);
             }
         });
         img_favorite.post(new Runnable() {

@@ -61,6 +61,8 @@ public class TC1Fragment extends DeviceFragment {
         public void handleMessage(Message msg) {// handler接收到消息后就会执行此方法
             switch (msg.what) {
                 case 1:
+                    if(device == null)
+                        break;
                     Send("{\"mac\": \"" + device.getMac() + "\","
                             + "\"version\":null,"
                             + "\"plug_0\" : {\"on\" : null,\"setting\":{\"name\":null}},"
